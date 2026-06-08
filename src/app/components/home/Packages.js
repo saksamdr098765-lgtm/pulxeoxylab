@@ -1,119 +1,110 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FaVial, FaHeartbeat, FaTint, FaMicroscope } from "react-icons/fa";
+import { FaHeartbeat, FaFlask, FaUserMd } from "react-icons/fa";
 
 const packages = [
   {
     title: "Basic Health Checkup",
-    desc: "Essential screening for overall health monitoring",
-    icon: FaVial,
-    tests: "35+ parameters",
+    price: "₹799",
+    icon: <FaHeartbeat />,
+    tests: [
+      "CBC",
+      "Blood Sugar",
+      "Urine Routine",
+      "Lipid Profile",
+    ],
   },
   {
-    title: "Complete Blood Count (CBC)",
-    desc: "Detailed blood composition analysis",
-    icon: FaTint,
-    tests: "15+ parameters",
+    title: "Advanced Wellness",
+    price: "₹1,499",
+    icon: <FaFlask />,
+    tests: [
+      "CBC",
+      "Liver Function Test",
+      "Kidney Function Test",
+      "Thyroid Profile",
+      "Vitamin D",
+    ],
   },
   {
-    title: "Diabetes Screening",
-    desc: "Glucose and long-term sugar control profile",
-    icon: FaHeartbeat,
-    tests: "Fasting + HbA1c",
-  },
-  {
-    title: "Advanced Diagnostic Panel",
-    desc: "Comprehensive metabolic and organ function tests",
-    icon: FaMicroscope,
-    tests: "60+ parameters",
+    title: "Executive Package",
+    price: "₹2,499",
+    icon: <FaUserMd />,
+    tests: [
+      "Full Body Checkup",
+      "Diabetes Profile",
+      "Heart Risk Markers",
+      "Thyroid Profile",
+      "Vitamin B12 & D",
+    ],
   },
 ];
 
-export default function Packages() {
+export default function DiagnosticPackages() {
   return (
-    <section className="w-full bg-[#05070a] text-white py-24 relative overflow-hidden">
-
-      {/* subtle medical grid */}
-      <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:70px_70px]" />
-
-      <div className="relative max-w-6xl mx-auto px-6">
-
-        {/* heading */}
+    <section className="bg-white py-20">
+      <div className="mx-auto max-w-7xl px-6">
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-14"
+          className="text-center"
         >
-          <p className="text-xs tracking-[0.35em] text-gray-500 uppercase">
-            Diagnostic Packages
-          </p>
+          <span className="rounded-full bg-blue-100 px-4 py-2 text-sm font-semibold text-blue-700">
+            Health Packages
+          </span>
 
-          <h2 className="text-3xl md:text-5xl font-semibold mt-4">
-            Preventive care made{" "}
-            <span className="text-cyan-400">simple</span>
+          <h2 className="mt-4 text-4xl font-black text-slate-900 lg:text-5xl">
+            Comprehensive Diagnostic Packages
           </h2>
 
-          <p className="text-gray-400 mt-4 max-w-2xl">
-            Structured health packages designed for early detection,
-            routine monitoring, and complete diagnostic clarity.
+          <p className="mx-auto mt-4 max-w-2xl text-slate-600">
+            Choose from our carefully designed health packages to monitor,
+            prevent, and manage your health with confidence.
           </p>
         </motion.div>
 
-        {/* list (NOT cards grid style) */}
-        <div className="space-y-4">
+        <div className="mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {packages.map((pkg, index) => (
+            <motion.div
+              key={pkg.title}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.15 }}
+              viewport={{ once: true }}
+              className="group rounded-3xl border border-slate-200 bg-white p-8 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+            >
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 text-2xl text-white">
+                {pkg.icon}
+              </div>
 
-          {packages.map((item, i) => {
-            const Icon = item.icon;
+              <h3 className="mt-6 text-2xl font-bold text-slate-900">
+                {pkg.title}
+              </h3>
 
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="flex items-center justify-between border border-white/10 rounded-xl px-5 py-4 hover:border-cyan-400/40 transition group"
-              >
+              <div className="mt-3 text-4xl font-black text-blue-600">
+                {pkg.price}
+              </div>
 
-                {/* left */}
-                <div className="flex items-center gap-4">
-                  <Icon className="text-cyan-400 text-lg" />
+              <ul className="mt-6 space-y-3">
+                {pkg.tests.map((test) => (
+                  <li
+                    key={test}
+                    className="flex items-center gap-3 text-slate-600"
+                  >
+                    <span className="h-2 w-2 rounded-full bg-blue-500"></span>
+                    {test}
+                  </li>
+                ))}
+              </ul>
 
-                  <div>
-                    <h3 className="font-medium group-hover:text-cyan-400 transition">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm text-gray-500">
-                      {item.desc}
-                    </p>
-                  </div>
-                </div>
-
-                {/* right meta */}
-                <div className="text-right">
-                  <p className="text-sm text-white">{item.tests}</p>
-                  <p className="text-xs text-gray-500">included</p>
-                </div>
-
-              </motion.div>
-            );
-          })}
-
+              <button className="mt-8 w-full rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 py-3 font-semibold text-white transition hover:opacity-90">
+                Book Package
+              </button>
+            </motion.div>
+          ))}
         </div>
-
-        {/* bottom CTA */}
-        <div className="mt-12 flex justify-between items-center flex-wrap gap-4">
-          <p className="text-gray-500 text-sm">
-            All packages are customizable based on doctor recommendation
-          </p>
-
-          <button className="text-cyan-400 text-sm flex items-center gap-2 hover:gap-3 transition">
-            View full test menu →
-          </button>
-        </div>
-
       </div>
     </section>
   );

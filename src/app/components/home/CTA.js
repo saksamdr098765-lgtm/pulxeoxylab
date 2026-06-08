@@ -1,84 +1,52 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FaPhoneAlt, FaWhatsapp, FaArrowRight } from "react-icons/fa";
+import { FaPhoneAlt, FaArrowRight } from "react-icons/fa";
 
 export default function CTA() {
-  return (
-    <section className="relative w-full py-28 bg-[#05070a] text-white overflow-hidden">
+return ( <section className="relative overflow-hidden py-20"> <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-500" />
 
-      {/* soft clinical glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(34,211,238,0.08),transparent_50%),radial-gradient(circle_at_70%_60%,rgba(16,185,129,0.06),transparent_55%)]" />
+  <div className="absolute -left-20 top-0 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
+  <div className="absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
 
-      {/* subtle grid */}
-      <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:80px_80px]" />
+  <div className="relative mx-auto max-w-6xl px-6">
+    <motion.div
+      initial={{ opacity: 0, y: 25 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="rounded-[32px] border border-white/20 bg-white/10 p-10 text-center backdrop-blur-md md:p-16"
+    >
+      <span className="rounded-full bg-white/20 px-4 py-2 text-sm font-semibold text-white">
+        Book Your Test Today
+      </span>
 
-      <div className="relative max-w-4xl mx-auto px-6 text-center">
+      <h2 className="mt-6 text-4xl font-black text-white md:text-5xl">
+        Your Health Deserves
+        <br />
+        Accurate Diagnostics
+      </h2>
 
-        {/* heading */}
-        <motion.h2
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-3xl md:text-5xl font-semibold leading-tight"
-        >
-          Book your diagnostic test with{" "}
-          <span className="text-cyan-400">confidence</span>
-        </motion.h2>
+      <p className="mx-auto mt-5 max-w-2xl text-lg text-blue-100">
+        Schedule your diagnostic tests with confidence. Fast reporting,
+        advanced technology, and expert healthcare professionals at your
+        service.
+      </p>
 
-        {/* subtitle */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="mt-6 text-gray-400 text-lg max-w-2xl mx-auto"
-        >
-          Fast reporting, accurate results, and trusted clinical evaluation —
-          delivered with care and precision.
-        </motion.p>
+      <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <button className="flex items-center gap-3 rounded-2xl bg-white px-8 py-4 font-semibold text-blue-700 transition hover:scale-105">
+          <FaArrowRight />
+          Book Appointment
+        </button>
 
-        {/* actions */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-
-          {/* primary CTA */}
-          <button className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-black px-6 py-3 rounded-xl font-medium transition">
-            Book a Test
-            <FaArrowRight />
-          </button>
-
-          {/* secondary CTA */}
-          <button className="flex items-center gap-2 border border-white/10 hover:border-white/30 px-6 py-3 rounded-xl text-gray-300 transition">
-            <FaWhatsapp className="text-green-400" />
-            WhatsApp Us
-          </button>
-
-          {/* tertiary */}
-          <button className="flex items-center gap-2 text-gray-400 hover:text-white transition text-sm">
-            <FaPhoneAlt />
-            Call Now
-          </button>
-
-        </motion.div>
-
-        {/* trust line */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="mt-10 text-xs text-gray-600"
-        >
-          Available for home sample collection • Reports shared digitally • Doctor consultation support
-        </motion.p>
-
+        <button className="flex items-center gap-3 rounded-2xl border border-white/30 bg-white/10 px-8 py-4 font-semibold text-white backdrop-blur-md transition hover:bg-white/20">
+          <FaPhoneAlt />
+          Call Now
+        </button>
       </div>
-    </section>
-  );
+    </motion.div>
+  </div>
+</section>
+
+
+);
 }

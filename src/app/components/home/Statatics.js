@@ -1,82 +1,87 @@
 "use client";
 
 import { motion } from "framer-motion";
+import {
+FaUsers,
+FaFlask,
+FaAward,
+FaFileMedical,
+} from "react-icons/fa";
 
 const stats = [
-  {
-    value: "10,000+",
-    label: "Tests processed monthly",
-  },
-  {
-    value: "24–48h",
-    label: "Average report turnaround",
-  },
-  {
-    value: "99.6%",
-    label: "Result accuracy rate",
-  },
-  {
-    value: "50+",
-    label: "Diagnostic parameters covered",
-  },
+{
+icon: FaUsers,
+value: "25K+",
+label: "Happy Patients",
+},
+{
+icon: FaFlask,
+value: "100+",
+label: "Diagnostic Tests",
+},
+{
+icon: FaFileMedical,
+value: "50K+",
+label: "Reports Delivered",
+},
+{
+icon: FaAward,
+value: "99%",
+label: "Accuracy Rate",
+},
 ];
 
-export default function Statatics() {
-  return (
-    <section className="w-full bg-[#05070a] text-white py-24 relative overflow-hidden">
+export default function Statistics() {
+return ( <section className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-cyan-500 py-20"> <div className="absolute inset-0 opacity-10"> <div className="absolute left-0 top-0 h-72 w-72 rounded-full bg-white blur-3xl" /> <div className="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-white blur-3xl" /> </div>
 
-      {/* subtle clinical grid */}
-      <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:80px_80px]" />
 
-      <div className="relative max-w-6xl mx-auto px-6">
+  <div className="relative mx-auto max-w-7xl px-6">
+    <motion.div
+      initial={{ opacity: 0, y: 25 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="text-center"
+    >
+      <h2 className="text-4xl font-black text-white lg:text-5xl">
+        Trusted By Thousands
+      </h2>
 
-        {/* header */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-14"
-        >
-          <p className="text-xs tracking-[0.35em] text-gray-500 uppercase">
-            Clinical Performance
-          </p>
+      <p className="mx-auto mt-4 max-w-2xl text-blue-100">
+        Delivering reliable diagnostics with precision, speed, and care.
+      </p>
+    </motion.div>
 
-          <h2 className="text-3xl md:text-5xl font-semibold mt-4">
-            Measured in <span className="text-cyan-400">precision</span>, not promises
-          </h2>
+    <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {stats.map((stat, index) => {
+        const Icon = stat.icon;
 
-          <p className="text-gray-400 mt-4 max-w-2xl">
-            Real operational metrics that reflect diagnostic reliability and lab efficiency.
-          </p>
-        </motion.div>
+        return (
+          <motion.div
+            key={stat.label}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1 }}
+            viewport={{ once: true }}
+            className="rounded-3xl border border-white/20 bg-white/10 p-8 text-center backdrop-blur-md"
+          >
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-white text-2xl text-blue-600">
+              <Icon />
+            </div>
 
-        {/* stats row (NOT cards/grid UI kit) */}
-        <div className="space-y-4">
+            <h3 className="mt-6 text-4xl font-black text-white">
+              {stat.value}
+            </h3>
 
-          {stats.map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              className="flex items-center justify-between border border-white/10 rounded-xl px-5 py-5 hover:border-cyan-400/40 transition"
-            >
-              <p className="text-gray-300">{item.label}</p>
-              <p className="text-cyan-400 font-semibold text-lg">
-                {item.value}
-              </p>
-            </motion.div>
-          ))}
+            <p className="mt-2 text-blue-100">
+              {stat.label}
+            </p>
+          </motion.div>
+        );
+      })}
+    </div>
+  </div>
+</section>
 
-        </div>
 
-        {/* bottom note */}
-        <div className="mt-10 text-xs text-gray-600">
-          Metrics updated based on internal lab performance tracking
-        </div>
-
-      </div>
-    </section>
-  );
+);
 }

@@ -2,108 +2,90 @@
 
 import { motion } from "framer-motion";
 import {
-  FaFlask,
-  FaClock,
-  FaShieldAlt,
-  FaMicroscope,
-  FaUserMd,
+FaAward,
+FaClock,
+FaMicroscope,
+FaUserMd,
 } from "react-icons/fa";
 
-const reasons = [
-  {
-    title: "Accurate reporting",
-    desc: "Results verified through multi-stage quality checks",
-    icon: FaMicroscope,
-  },
-  {
-    title: "Fast turnaround",
-    desc: "Most reports delivered within 24–48 hours",
-    icon: FaClock,
-  },
-  {
-    title: "Clinical validation",
-    desc: "Reviewed by certified pathologists and lab technicians",
-    icon: FaUserMd,
-  },
-  {
-    title: "Secure handling",
-    desc: "Strict sample tracking and privacy protection protocols",
-    icon: FaShieldAlt,
-  },
-  {
-    title: "Advanced equipment",
-    desc: "Automated analyzers for precision-based diagnostics",
-    icon: FaFlask,
-  },
+const features = [
+{
+icon: FaAward,
+title: "Accurate Results",
+description:
+"Advanced diagnostic technology ensures highly accurate and reliable test reports.",
+},
+{
+icon: FaClock,
+title: "Quick Turnaround",
+description:
+"Get your reports faster with streamlined testing and digital delivery.",
+},
+{
+icon: FaMicroscope,
+title: "Modern Laboratory",
+description:
+"State-of-the-art equipment and quality-controlled testing processes.",
+},
+{
+icon: FaUserMd,
+title: "Expert Professionals",
+description:
+"Experienced pathologists and healthcare experts committed to quality care.",
+},
 ];
 
-export default function WhyUs() {
-  return (
-    <section className="w-full bg-[#05070a] text-white py-24 relative overflow-hidden">
+export default function WhyChooseUs() {
+return ( <section className="bg-white py-20"> <div className="mx-auto max-w-7xl px-6">
+<motion.div
+initial={{ opacity: 0, y: 25 }}
+whileInView={{ opacity: 1, y: 0 }}
+viewport={{ once: true }}
+className="mx-auto max-w-3xl text-center"
+> <span className="rounded-full bg-blue-100 px-4 py-2 text-sm font-semibold text-blue-700">
+Why Choose Us </span>
 
-      {/* subtle clinical grid */}
-      <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:75px_75px]" />
+      <h2 className="mt-5 text-4xl font-black text-slate-900 lg:text-5xl">
+        Trusted Diagnostics, Exceptional Care
+      </h2>
 
-      <div className="relative max-w-6xl mx-auto px-6">
+      <p className="mt-5 text-slate-600">
+        We combine cutting-edge technology, expert professionals, and
+        patient-focused services to deliver reliable healthcare solutions.
+      </p>
+    </motion.div>
 
-        {/* header */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-14"
-        >
-          <p className="text-xs tracking-[0.35em] text-gray-500 uppercase">
-            Trust & Quality
-          </p>
+    <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {features.map((feature, index) => {
+        const Icon = feature.icon;
 
-          <h2 className="text-3xl md:text-5xl font-semibold mt-4">
-            Why patients & doctors <span className="text-cyan-400">trust us</span>
-          </h2>
+        return (
+          <motion.div
+            key={feature.title}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1 }}
+            viewport={{ once: true }}
+            className="group rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-blue-200 hover:shadow-xl"
+          >
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 text-2xl text-white">
+              <Icon />
+            </div>
 
-          <p className="text-gray-400 mt-4 max-w-2xl">
-            Built around accuracy, transparency, and clinical reliability —
-            not assumptions or shortcuts.
-          </p>
-        </motion.div>
+            <h3 className="mt-6 text-xl font-bold text-slate-900">
+              {feature.title}
+            </h3>
 
-        {/* vertical system list (NOT cards/grid) */}
-        <div className="space-y-4">
+            <p className="mt-4 text-sm leading-relaxed text-slate-600">
+              {feature.description}
+            </p>
+          </motion.div>
+        );
+      })}
+    </div>
+  </div>
+</section>
 
-          {reasons.map((item, i) => {
-            const Icon = item.icon;
 
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="flex items-start gap-4 border border-white/10 rounded-xl px-5 py-4 hover:border-cyan-400/40 transition group"
-              >
-                <Icon className="text-cyan-400 text-lg mt-1" />
-
-                <div>
-                  <h3 className="font-medium group-hover:text-cyan-400 transition">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-gray-500 mt-1">
-                    {item.desc}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
-
-        </div>
-
-        {/* bottom trust line */}
-        <div className="mt-10 text-xs text-gray-600">
-          All processes follow standard laboratory quality control protocols
-        </div>
-
-      </div>
-    </section>
-  );
+);
 }

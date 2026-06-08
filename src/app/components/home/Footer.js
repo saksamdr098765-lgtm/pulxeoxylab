@@ -1,89 +1,139 @@
 "use client";
 
-import { FaPhoneAlt, FaWhatsapp, FaMapMarkerAlt } from "react-icons/fa";
+import Link from "next/link";
+import {
+FaFacebookF,
+FaInstagram,
+FaLinkedinIn,
+FaPhoneAlt,
+FaEnvelope,
+FaMapMarkerAlt,
+} from "react-icons/fa";
 
 export default function Footer() {
-  return (
-    <footer className="relative w-full bg-[#05070a] text-white border-t border-white/10">
+return ( <footer className="bg-slate-950 text-slate-300"> <div className="mx-auto max-w-7xl px-6 py-16"> <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+{/* Company */} <div> <h3 className="text-2xl font-black text-white">
+Pulxeoxy Labs </h3>
 
-      {/* subtle grid background */}
-      <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:80px_80px]" />
 
-      <div className="relative max-w-6xl mx-auto px-6 py-16">
+        <p className="mt-4 leading-relaxed text-slate-400">
+          Delivering accurate diagnostics and trusted healthcare
+          solutions with advanced technology and expert care.
+        </p>
 
-        {/* top section */}
-        <div className="flex flex-col md:flex-row md:justify-between gap-12">
+        <div className="mt-6 flex gap-4">
+          <a
+            href="#"
+            className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 transition hover:bg-blue-600"
+          >
+            <FaFacebookF />
+          </a>
 
-          {/* brand */}
-          <div>
-            <h2 className="text-xl font-semibold text-cyan-400">
-              PulseOxylabs
-            </h2>
-            <p className="text-gray-400 text-sm mt-3 max-w-sm leading-relaxed">
-              Diagnostic precision lab focused on accurate testing,
-              reliable reporting, and patient-first healthcare solutions.
-            </p>
+          <a
+            href="#"
+            className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 transition hover:bg-pink-600"
+          >
+            <FaInstagram />
+          </a>
 
-            <p className="text-xs text-gray-600 mt-4">
-              NABL-aligned processes • Secure reporting • Clinical validation
-            </p>
-          </div>
-
-          {/* services */}
-          <div>
-            <h3 className="text-sm text-gray-300 mb-4">Diagnostics</h3>
-            <ul className="space-y-2 text-sm text-gray-500">
-              <li>Hematology</li>
-              <li>Biochemistry</li>
-              <li>Immunology</li>
-              <li>Cardiac Profile</li>
-              <li>Preventive Health Packages</li>
-            </ul>
-          </div>
-
-          {/* contact */}
-          <div>
-            <h3 className="text-sm text-gray-300 mb-4">Contact</h3>
-
-            <div className="space-y-3 text-sm text-gray-400">
-
-              <div className="flex items-center gap-2">
-                <FaPhoneAlt className="text-cyan-400" />
-                +91 XXXXX XXXXX
-              </div>
-
-              <div className="flex items-center gap-2">
-                <FaWhatsapp className="text-green-400" />
-                WhatsApp Support
-              </div>
-
-              <div className="flex items-start gap-2">
-                <FaMapMarkerAlt className="text-red-400 mt-1" />
-                Sangrur, Punjab, India
-              </div>
-
-            </div>
-          </div>
-
+          <a
+            href="#"
+            className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 transition hover:bg-blue-500"
+          >
+            <FaLinkedinIn />
+          </a>
         </div>
-
-        {/* divider */}
-        <div className="border-t border-white/10 my-10" />
-
-        {/* bottom */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-
-          <p className="text-xs text-gray-600">
-            © {new Date().getFullYear()} PulseOxylabs. All rights reserved.
-          </p>
-
-          <p className="text-xs text-gray-600">
-            Privacy Policy • Terms of Service • Medical Disclaimer
-          </p>
-
-        </div>
-
       </div>
-    </footer>
-  );
+
+      {/* Quick Links */}
+      <div>
+        <h4 className="text-lg font-bold text-white">
+          Quick Links
+        </h4>
+
+        <ul className="mt-6 space-y-3">
+          <li>
+            <Link href="/" className="hover:text-white">
+              Home
+            </Link>
+          </li>
+
+          <li>
+            <Link href="/about" className="hover:text-white">
+              About Us
+            </Link>
+          </li>
+
+          <li>
+            <Link href="/services" className="hover:text-white">
+              Services
+            </Link>
+          </li>
+
+          <li>
+            <Link href="/packages" className="hover:text-white">
+              Packages
+            </Link>
+          </li>
+
+          <li>
+            <Link href="/contact" className="hover:text-white">
+              Contact
+            </Link>
+          </li>
+        </ul>
+      </div>
+
+      {/* Services */}
+      <div>
+        <h4 className="text-lg font-bold text-white">
+          Diagnostic Services
+        </h4>
+
+        <ul className="mt-6 space-y-3">
+          <li>Blood Tests</li>
+          <li>Pathology</li>
+          <li>Radiology</li>
+          <li>Cardiac Screening</li>
+          <li>Health Checkups</li>
+        </ul>
+      </div>
+
+      {/* Contact */}
+      <div>
+        <h4 className="text-lg font-bold text-white">
+          Contact Us
+        </h4>
+
+        <div className="mt-6 space-y-4">
+          <div className="flex items-start gap-3">
+            <FaPhoneAlt className="mt-1 text-blue-400" />
+            <span>+91 98765 43210</span>
+          </div>
+
+          <div className="flex items-start gap-3">
+            <FaEnvelope className="mt-1 text-blue-400" />
+            <span>info@pulxeoxylabs.com</span>
+          </div>
+
+          <div className="flex items-start gap-3">
+            <FaMapMarkerAlt className="mt-1 text-blue-400" />
+            <span>
+              123 Healthcare Street,
+              <br />
+              Punjab, India
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div className="mt-12 border-t border-slate-800 pt-6 text-center text-sm text-slate-500">
+      © {new Date().getFullYear()} Pulxeoxy Labs. All Rights Reserved.
+    </div>
+  </div>
+</footer>
+
+
+);
 }
